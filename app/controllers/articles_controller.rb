@@ -1,6 +1,10 @@
 # Note on controllers: Only public methods can be actions for controllers
 
 class ArticlesController < ApplicationController
+  def index
+    @articles = Article.all
+  end
+
   # Show action
   def show 
     @article = Article.find(params[:id])
