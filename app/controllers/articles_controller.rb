@@ -25,6 +25,17 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # Updates articles
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render 'edit'
+    end
+  end
+
   private
   # Requires params (form inputs) and prevents mass assignment
     def article_params
