@@ -17,8 +17,11 @@ class ArticlesController < ApplicationController
     # Creates new Article model to save the database
     @article = Article.new(article_params)
     # Saves to db
-    @article.save
-    redirect_to @article
+    if @article.save
+      redirect_to @article
+    else
+      render 'new'
+    end
   end
 
   private
