@@ -14,6 +14,10 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   def create
     # Creates new Article model to save the database
     @article = Article.new(article_params)
@@ -28,7 +32,7 @@ class ArticlesController < ApplicationController
   # Updates articles
   def update
     @article = Article.find(params[:id])
-
+   
     if @article.update(article_params)
       redirect_to @article
     else
