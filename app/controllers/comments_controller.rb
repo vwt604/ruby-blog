@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy # User authentication
+
   def create   # Using the create method on @article.comments to create and save the comment. This will automatically link the comment so that it belongs to that particular article.
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)

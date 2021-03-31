@@ -1,6 +1,8 @@
 # Note on controllers: Only public methods can be actions for controllers
 
 class ArticlesController < ApplicationController
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]  # User authentication
+
   def index
     @articles = Article.all
   end
